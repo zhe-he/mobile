@@ -1,5 +1,5 @@
 <h1>Mobile</h1>
-<h3>版本1.0.4</h3>
+<h3>版本1.0.5</h3>
 
  引用js
 
@@ -149,5 +149,12 @@
 <br/>1.0.3 移除    Mobile.reViewCookie(name, str, count)、Mobile.addCookie(name, value, expiresDays)<br/>
 <br/>2015-6-11
 <br/>1.0.4 优化    Mobile.getSearch 参数不存在的时返回的bug
-<br/>1.0.4 添加    Mobile.getData(name)
+<br/>1.0.4 添加    Mobile.getData(name)<br/>
+<br/>2015-8-6
+<br/>1.0.5 优化    Mobile.isMobile 改变判断条件替换UA判断
+<br/>1.0.5 优化    Mobile.scrollMove 运动定时器改为Mobile.setTime
+<br/>1.0.5 添加    Mobile.setTime(callback)
+<br/>1.0.5 添加    Mobile.clearTime(id)
+
+
 
