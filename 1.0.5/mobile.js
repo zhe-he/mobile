@@ -3,7 +3,7 @@
  * url: https://github.com/zhe-he/mobile
  * ◇ 原谅我的悲伤逆流成河
  * Last updata time: 2015-06-11
- * 版本： 	1.0.4
+ * 版本： 	1.0.5
  */
 'use strict';
 
