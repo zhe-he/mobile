@@ -13,9 +13,11 @@
 
  4. 判断是否为Ios系统 <pre>Mobile.isIos()</pre>
 
- 5. 判断是否为<pre>UC Mobile.isUC()</pre>   more see-> http://www.uc.cn/download/UCBrowser_User_Agent.pdf    1.0.6移除
+ 5. 判断是否为UC   1.0.6移除
+ <pre>Mobile.isUC()</pre>   more see-> http://www.uc.cn/download/UCBrowser_User_Agent.pdf    
 
- 6. 判断是否为UC极速模式 <pre>Mobile.isUCFast()</pre>   1.0.6移除
+ 6. 判断是否为UC极速模式   1.0.6移除
+ <pre>Mobile.isUCFast()</pre>   
 
 
  7. 最近浏览（已移除） 	1.0.3 移除
@@ -31,8 +33,10 @@
   <pre>Mobile.addCookie(name, value, expiresDays)（已移除）</pre> 
 
 
- 9. 获取cookie <pre> Mobile.getCookie(name)</pre>    1.0.6移除
- 10. 删除cookie <pre> Mobile.removeCookie(name)</pre>   1.0.6移除
+ 9. 获取cookie  1.0.6移除
+ <pre> Mobile.getCookie(name)</pre>    
+ 10. 删除cookie  1.0.6移除 
+ <pre> Mobile.removeCookie(name)</pre>  
 
  11. 改变地址栏参数：如果地址栏有对应参数，改变参数值并跳转，如果没有对应参数则为添加参数，自动补全?
   <pre> Mobile.changeUrl()</pre> 
@@ -114,6 +118,4 @@
 <br/>1.0.5 添加    Mobile.clearTime(id)
 <br/>2016-3-16
 <br/>1.0.6 移除某些不必要的东西，更加小巧精简
-
-
 
