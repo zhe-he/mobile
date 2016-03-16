@@ -10,7 +10,7 @@
 	button{padding: 5px; border-radius: 5px; display: block; margin: 5px;}
 
 </style>
-<script type="text/javascript" src="1.0.5/mobile.js"></script>
+<script type="text/javascript" src="mobile/mobile.js"></script>
 </head>
 <body>
 <p class="show"></p>
@@ -22,18 +22,6 @@
 <p class="show"></p>
 <button class="btn">是否为Ios系统</button>
 <p class="show"></p>
-<button class="btn">是否为UC</button>
-<p class="show"></p>
-<button class="btn">是否为UC极速模式</button>
-
-<p class="showCookie">cookie需在服务器中使用</p>
-<input class="cookieInput" type="text" value="" placeholder="请输入添加cookie的名字">
-<input class="cookieInput" type="text" value="" placeholder="请输入添加cookie的值">
-<button class="btnCookie">添加cookie</button>
-<input class="cookieInput" type="text" value="" placeholder="请输入删除cookie的名字">
-<button class="btnCookie">删除cookie</button>
-<input class="cookieInput" type="text" value="" placeholder="请输入获取cookie的名字">
-<button class="btnCookie">获取cookie</button>
 
 <div class="showDiv"></div>
 <button class="showDivBtn">SetTime开始</button>
@@ -83,7 +71,7 @@
 	function showIs(){
 		var aBtn = document.querySelectorAll('.btn');
 		var aP = document.querySelectorAll('.show');
-		var arrEffect = ['isMobile','isWeixin','isAndroid','isIos','isUC','isUCFast'];
+		var arrEffect = ['isMobile','isWeixin','isAndroid','isIos'];
 		for (var i = 0; i < aBtn.length; i++) {
 			(function (index){
 				aBtn[i].addEventListener('click', function (){
@@ -93,62 +81,11 @@
 		};
 	}
 
-	//Mobile cookie 	-> 推荐用localStorage
-	function showCookie(){
-		var aInput = document.querySelectorAll('.cookieInput');
-		var oDiv = document.querySelector('.showCookie');
-		var aBtn = document.querySelectorAll('.btnCookie');
-
-		//添加
-		aBtn[0].addEventListener('click', function (){
-			var name = aInput[0].value.trim();
-			var value = aInput[1].value.trim();
-
-			if (!name) {
-				oDiv.innerHTML = '请输入添加cookie的名字';
-				return false;
-			};
-			if (!value) {
-				oDiv.innerHTML = '请输入添加cookie的值';
-				return false;
-			};
-			Mobile.addCookie(name, value, 14);
-			oDiv.innerHTML = '已添加cookie: ' + name + '=' + value + ',有效期14天';
-		}, false);
-
-		//删除
-		aBtn[1].addEventListener('click', function (){
-			var name = aInput[2].value.trim();
-
-			if (!name) {
-				oDiv.innerHTML = '请输入删除cookie的名字';
-				return false;
-			};
-			Mobile.removeCookie(name);
-			oDiv.innerHTML = '已删除cookie: ' + name;
-		}, false);
-
-		//获取
-		aBtn[2].addEventListener('click', function (){
-			var name = aInput[3].value.trim();
-
-			if (!name) {
-				oDiv.innerHTML = '请输入获取cookie的名字';
-				return false;
-			};
-			var value = Mobile.getCookie(name);
-			if (value === '') {value = '空'};
-			oDiv.innerHTML = '获取cookie: ' + name + '的值为' + value + '';
-		})
-	}
-
-
 
 	init()
 	function init(){
 		showSetTime();
 		showIs();
-		showCookie()
 	}
 })();
 </script>

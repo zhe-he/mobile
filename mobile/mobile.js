@@ -28,16 +28,10 @@
 		return /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)
 	}
 
-	Mobile.isUC = function (){
-		return /UCBrowser/i.test(navigator.userAgent)
-	}
-
-	Mobile.isUCFast = function (){
-		return /UCWEB/i.test(navigator.userAgent)
-	}
-
-	//cookies
+	
+	//cookies 移除
 	//移动端建议用localStorage see->http://www.cnblogs.com/xiaowei0705/archive/2011/04/19/2021372.html
+	/*
 	Mobile.addCookie = function (name, value, expiresDays){ 
 	    var cookieString = name + "=" + escape(value); 
 
@@ -61,7 +55,7 @@
 	}
 	Mobile.removeCookie = function (name){
 		this.addCookie(name, 1, -1);
-	}
+	}*/
 
 	//改变地址栏参数
 	Mobile.changeUrl = function (name, value){
@@ -367,141 +361,7 @@
 	    }
 	}
 
-	Mobile.weiboShare = function (options){
-		var url = 'http://service.weibo.com/share/' + (this.isMobile ?'mobile':'share') + '.php?';
-		var key,urlArray = [];
-		
-		if(options){
-			for(key in options){
-				if(options.hasOwnProperty(key)){
-					switch(key){
-						case 'url':
-						case 'pic':
-						case 'title':
-							urlArray.push(key + '=' + encodeURIComponent(options[key]))
-							break;
-						case 'ralateUid':
-						case 'appkey':
-							urlArray.push(key + '=' + options[key])
-							break;
-					}
-				}
-			}
-			try{
-				window.open(url + urlArray.join('&'));	
-			}catch(e){};
-		}
-	}
-
-	Mobile.addMorePageIndex = 1;
-	Mobile.addMoreComeReady = false;
-	Mobile.addMore = function(dataJson, haddMore, success, error){
-	    //参数设定
-	    var _this = this;
-	    var dataJson = dataJson || {};
-	    dataJson.dataType = dataJson.dataType || 'json';
-	    dataJson.data = dataJson.data || {};
-	    dataJson.pShow = dataJson.pShow || '加载中';
-	    dataJson.pShow2 = dataJson.pShow2 || '.';
-	    dataJson.pShowNum = parseInt(dataJson.pShowNum, 10) || 3;
-	    dataJson.pNo = dataJson.pNo || '暂无数据信息';
-	    dataJson.error = dataJson.error || '加载失败，请刷新重试';
-	    dataJson.success = dataJson.success || '已加载完';
-	    dataJson.distance = dataJson.distance || 10;
-	    dataJson.message = dataJson.message || 'message';
-
-	    var timer,pMore = [];
-
-	    var H = document.documentElement.scrollHeight || document.body.scrollHeight;
-	    
-	    var h = window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight + document.documentElement.scrollTop||document.body.scrollTop;
-	    //var h = $(window).height() + $(window).scrollTop(); 	
-	    if (H - h < dataJson.distance && !this.addMoreComeReady) {
-	        
-	        this.addMoreComeReady = true;
-	        this.addMorePageIndex++;
-	        
-	        var k = 0;
-	        for (var i = 0; i <= dataJson.pShowNum; i++) {
-	        	var str = '';
-	        	var j = i;
-	        	while(j){
-	        		j--;
-	        		str += dataJson.pShow2;
-	        	}
-	        	pMore[i] = dataJson.pShow + str;
-	        };
-	        
-	        pMoreShow();
-	        clearInterval(timer);
-	        timer = setInterval(pMoreShow, 500);
-
-	        var addMoreJson = {
-				url: 	dataJson.url,
-				data:   dataJson.data,
-				success:    function(data){
-	                if(dataJson.dataType == 'json'){
-	                	data = eval('(' + data + ')')
-	                };
-	                clearInterval(timer);
-	                haddMore.innerHTML = '';
-	                if (data instanceof Array) {
-	                    var data2 = data;
-	                }else{
-	                    var data2 = data.data||[];
-	                };
-	                if (data2.length == 0) {
-	                    _this.addMoreDataMessage = data[dataJson.message];
-	                    pNoShow();
-	                    _this.addMorePageIndex--;
-	                }else{
-	                    _this.addMoreComeReady = false;
-	                };
-	                success && success(data);
-	            },
-	            error:  function (error1){
-	                clearInterval(timer);
-	                haddMore.innerHTML = dataJson.error;
-	                setTimeout(function (){
-	                    _this.addMoreComeReady = false;
-	                }, 1000);
-	                error && error(error1);
-	            }
-			}
-
-	        switch(dataJson.dataType){
-				case 'json':
-					addMoreJson.type = dataJson.type || 'get';
-					_this.ajax(addMoreJson);
-					break;
-				case 'jsonp':
-					addMoreJson.type = dataJson.type || 'post';
-					_this.jsonp(addMoreJson);
-					break;
-			}
-
-	    }
-	    function pNoShow(){
-	        haddMore.innerHTML = dataJson.success;
-	        setTimeout(function (){
-	            haddMore.innerHTML = '';
-	            _this.addMoreComeReady = false;
-	            //第一次加载没数据显示
-	            if (_this.addMorePageIndex == 1 && _this.addMoreComeReady == false) {
-	                _this.addMoreDataMessage = _this.addMoreDataMessage || dataJson.pNo;
-	                haddMore.innerHTML = _this.addMoreDataMessage;
-	            };
-
-	        }, 1000);
-
-	    }
-	    function pMoreShow(){
-	        k++;
-	        if (k >= pMore.length) k = 0;
-	        haddMore.innerHTML = pMore[k];
-	    }
-	};
-
+	
 	Mobile.setTime = function (callback){
 		var _this = this;
 		var a = window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function (callback){

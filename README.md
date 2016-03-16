@@ -1,5 +1,5 @@
 <h1>Mobile</h1>
-<h3>版本1.0.5</h3>
+<h3>版本1.0.6</h3>
 
  引用js
 
@@ -13,9 +13,9 @@
 
  4. 判断是否为Ios系统 <pre>Mobile.isIos()</pre>
 
- 5. 判断是否为<pre>UC Mobile.isUC()</pre>   more see-> http://www.uc.cn/download/UCBrowser_User_Agent.pdf
+ 5. 判断是否为<pre>UC Mobile.isUC()</pre>   more see-> http://www.uc.cn/download/UCBrowser_User_Agent.pdf    1.0.6移除
 
- 6. 判断是否为UC极速模式 <pre>Mobile.isUCFast()</pre>
+ 6. 判断是否为UC极速模式 <pre>Mobile.isUCFast()</pre>   1.0.6移除
 
 
  7. 最近浏览（已移除） 	1.0.3 移除
@@ -31,8 +31,8 @@
   <pre>Mobile.addCookie(name, value, expiresDays)（已移除）</pre> 
 
 
- 9. 获取cookie <pre> Mobile.getCookie(name)</pre> 
- 10. 删除cookie <pre> Mobile.removeCookie(name)</pre> 
+ 9. 获取cookie <pre> Mobile.getCookie(name)</pre>    1.0.6移除
+ 10. 删除cookie <pre> Mobile.removeCookie(name)</pre>   1.0.6移除
 
  11. 改变地址栏参数：如果地址栏有对应参数，改变参数值并跳转，如果没有对应参数则为添加参数，自动补全?
   <pre> Mobile.changeUrl()</pre> 
@@ -99,49 +99,6 @@
 	 Mobile.scrollMove(options)
 
 
- 20. 新浪微博分享 
- 	
-		options.title 分享内容
-		options.url String 分享链接
-		options.pic String 分享图片的url
-		options.ralateUid String 或 Number 相关微博Uid，如果有此项，分享内容会自动 @相关微博
-		options.appkey String 或 Number 分享来源的appkey，如果有此项，会在微博正文地下，显示“来自XXX”
-  		
-  	Mobile.weiboShare(options)
-
-
- 21. 下拉加载
-    
- 		Mobile.addMorePageIndex = 1;
-		Mobile.addMoreComeReady = false;
-	实现 单页面tab切换多个下拉加载时 需要复位以上2个属性
-    
-		dataJson.dataType 	json or jsonp, 缺省值为json;
-		dataJson.url 		请求地址
-	    dataJson.data 		请求参数
-		dataJson.distance 	发起请求距离底部距离,缺省值10
-		
-		ele: 	显示 加载中... 的原生对象
-		success: 	成功回调函数
-		error: 		失败回调函数
-    
-	    以下参数按需设置
-		    dataJson.pShow  	请求数据显示的文字,缺省值 加载中
-		    dataJson.pShow2 	请求数据显示的点,缺省值 .
-		    dataJson.pShowNum  	请求数据显示的点的个数,缺省值 3
-		    dataJson.pNo  		请求数据的错误信息,缺省值 data.message or 暂无数据信息
-		    dataJson.error  	请求失败显示,缺省值 加载失败，请刷新重试
-		    dataJson.success 	请求成功显示,缺省值 已加载完
-		    dataJson.message 	请求成功没数据所代表是的参数 缺省值message
-    
-	Mobile.addMore(dataJson, ele, success, error)
-	使用示例 Mobile.addMore({
-		url: 	'',
-		data: 	{
-			page: 	Mobile.addMorePageIndex
-		}
-	}, ele, fn1, fn2);
-
 更新日志<br/>
 <br/>2015-6-4
 <br/>1.0.3 添加    Mobile.shuping 监测手机竖屏事件
@@ -155,6 +112,8 @@
 <br/>1.0.5 优化    Mobile.scrollMove 运动定时器改为Mobile.setTime
 <br/>1.0.5 添加    Mobile.setTime(callback)
 <br/>1.0.5 添加    Mobile.clearTime(id)
+<br/>2016-3-16
+<br/>1.0.6 移除某些不必要的东西，更加小巧精简
 
 
 
