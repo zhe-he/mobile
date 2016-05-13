@@ -3,7 +3,7 @@
  * url: https://github.com/zhe-he/mobile
  * ◇ 原谅我的悲伤逆流成河
  * Last updata time: 2016-3-16
- * 版本： 	1.0.6
+ * 版本： 	1.0.7
  */
 'use strict';
 
@@ -382,6 +382,14 @@
 		return a(id);
 	};
 
-	window.Mobile = Mobile;
+	if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		define(function() {
+			return Mobile;
+		});
+	} else if (typeof module !== 'undefined' && module.exports) {
+		module.exports.Mobile = Mobile;
+	} else {
+		window.Mobile = Mobile;
+	}
 	
 })(window, navigator);
