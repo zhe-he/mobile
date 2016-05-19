@@ -387,7 +387,7 @@
 			return Mobile;
 		});
 	} else if (typeof module !== 'undefined' && module.exports) {
-		module.exports.Mobile = Mobile;
+		module.exports = Mobile;
 	} else {
 		window.Mobile = Mobile;
 	}
