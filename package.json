@@ -1,0 +1,23 @@
+{
+  "name": "mobile-tool",
+  "version": "1.0.7",
+  "description": "一款基于移动端而生的迷你库",
+  "main": "moblie/mobile.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhe-he/mobile.git"
+  },
+  "keywords": [
+    "mobile",
+    "tool"
+  ],
+  "author": "zhe-he",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhe-he/mobile/issues"
+  },
+  "homepage": "https://github.com/zhe-he/mobile#readme"
+}
